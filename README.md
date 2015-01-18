@@ -11,3 +11,9 @@ gulp build
 ```sh
 npm run dev-server
 ```
+
+http://localhost:8080/
+
+or
+
+http://localhost:8080/webpack-dev-server/

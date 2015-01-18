@@ -18,7 +18,7 @@
     "assets-webpack-plugin": "^0.1.0"
   },
   "scripts": {
-    "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build/ --hot --colors --progress"
+    "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build/public --no-info --hot --colors --progress"
   },
   "author": "",
   "license": "ISC"

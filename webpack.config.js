@@ -18,7 +18,7 @@ var configs = {
   },
   output: {
     jsonpFunction: 'wload',
-    path: __dirname + '/build',
+    path: __dirname + '/build/public/js',
     filename: 'app-bundle.js'
   },
   module: {
