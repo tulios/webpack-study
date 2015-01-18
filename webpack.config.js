@@ -1,5 +1,8 @@
+var path = require('path')
 var webpack = require('webpack')
 var env = process.env['NODE_ENV'] || 'dev'
+
+var SaveAssetsJson = require('assets-webpack-plugin')
 
 var configs = {
   context: __dirname,
@@ -24,22 +27,33 @@ var configs = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.json', '.coffee', '.jsx']
+    extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle.js'),
     new webpack.ProvidePlugin({
-      $: 'jquery'
+      $: 'jquery',
+      jQuery: 'jquery'
     })
   ]
 }
 
 if (/^(dev|test)/.test(env)) {
   configs.entry.app = ['webpack/hot/dev-server'].concat(configs.entry.app);
+  configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle.js'))
 
 } else if (/^prod/.test(env)) {
-  console.log('production env')
-  configs.plugins.push(new UglifyJsPlugin({ sourceMap: false }))
+  configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle-[hash].js'))
+
+  configs.plugins.push(new webpack.optimize.UglifyJsPlugin({
+    sourceMap: false
+  }))
+
+  configs.plugins.push(new SaveAssetsJson({
+    filename: 'manifest.json',
+    path: path.join(__dirname, 'build')
+  }))
+
+  configs.output.filename = configs.output.filename.replace(/\.js$/, '-[hash].js')
 }
 
 module.exports = configs;
