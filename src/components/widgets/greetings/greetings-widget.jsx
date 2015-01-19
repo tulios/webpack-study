@@ -4,7 +4,7 @@ module.exports = React.createClass({
   render: function() {
     return (
       <span className='greetings'>
-        Greetings!
+        Greetings! =]
       </span>
     )
   }

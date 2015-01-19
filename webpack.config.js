@@ -1,6 +1,8 @@
 var path = require('path')
 var webpack = require('webpack')
+
 var env = process.env['NODE_ENV'] || 'dev'
+var notHotReload = process.env['HOT'] || 'true'
 
 var SaveAssetsJson = require('assets-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
@@ -10,6 +12,7 @@ var configs = {
   debug: false,
   entry: {
     app: ['./src/app.jsx'],
+    styles: ['./src/styles.js'],
     vendor: [
       'jquery',
       'react',
@@ -25,8 +28,7 @@ var configs = {
   module: {
     loaders: [
       {test: /\.jsx$/, loader: 'jsx-loader'},
-      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
-      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')}
+      {test: /\.(css|scss)$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')}
     ]
   },
   resolve: {
@@ -41,24 +43,24 @@ var configs = {
 }
 
 if (/^(dev|test)/.test(env)) {
-  configs.entry.app = ['webpack/hot/dev-server'].concat(configs.entry.app);
+  if (notHotReload !== 'false') {
+    configs.entry.app = ['webpack/hot/dev-server'].concat(configs.entry.app);
+  }
+
   configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle.js'))
-  configs.plugins.push(new ExtractTextPlugin("app-bundle.css"))
+  configs.plugins.push(new ExtractTextPlugin('app-bundle.css', {allChunks: true}))
 
 } else if (/^prod/.test(env)) {
   configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle-[hash].js'))
-  configs.plugins.push(new ExtractTextPlugin("app-bundle-[hash].css"))
+  configs.output.filename = configs.output.filename.replace(/\.js$/, '-[hash].js')
+  configs.plugins.push(new ExtractTextPlugin('app-bundle-[hash].css', {allChunks: true}))
 
-  configs.plugins.push(new webpack.optimize.UglifyJsPlugin({
-    sourceMap: false
-  }))
+  configs.plugins.push(new webpack.optimize.UglifyJsPlugin({sourceMap: false}))
 
   configs.plugins.push(new SaveAssetsJson({
     filename: 'manifest.json',
     path: path.join(__dirname, 'build')
   }))
-
-  configs.output.filename = configs.output.filename.replace(/\.js$/, '-[hash].js')
 }
 
 module.exports = configs;

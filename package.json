@@ -22,7 +22,7 @@
     "assets-webpack-plugin": "^0.1.0"
   },
   "scripts": {
-    "dev-server": "./node_modules/.bin/webpack-dev-server --content-base build/public --no-info --hot --colors --progress"
+    "dev-server": "./node_modules/.bin/webpack-dev-server --port 8082 --content-base build/public  --hot --colors --progress"
   },
   "author": "",
   "license": "ISC"
