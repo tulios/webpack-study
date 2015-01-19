@@ -8,6 +8,7 @@ var SaveAssetsJson = require('assets-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var appConfigs = require('./configs');
+var outputDir = path.join(__dirname, '/build/public/assets');
 
 var configs = {
   context: __dirname,
@@ -19,7 +20,7 @@ var configs = {
   },
   output: {
     jsonpFunction: 'wload',
-    path: __dirname + '/build/public/assets',
+    path: outputDir,
     filename: 'app-bundle.js'
   },
   module: {
@@ -56,7 +57,7 @@ if (/^(dev|test)/.test(env)) {
 
   configs.plugins.push(new SaveAssetsJson({
     filename: 'manifest.json',
-    path: path.join(__dirname, 'build')
+    path: outputDir
   }))
 }
 
