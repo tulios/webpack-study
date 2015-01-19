@@ -3,6 +3,7 @@ var webpack = require('webpack')
 var env = process.env['NODE_ENV'] || 'dev'
 
 var SaveAssetsJson = require('assets-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var configs = {
   context: __dirname,
@@ -18,16 +19,18 @@ var configs = {
   },
   output: {
     jsonpFunction: 'wload',
-    path: __dirname + '/build/public/js',
+    path: __dirname + '/build/public/assets',
     filename: 'app-bundle.js'
   },
   module: {
     loaders: [
-      {test: /\.jsx$/, loader: 'jsx-loader'}
+      {test: /\.jsx$/, loader: 'jsx-loader'},
+      {test: /\.css$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader')},
+      {test: /\.scss$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')}
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.css', '.scss']
   },
   plugins: [
     new webpack.ProvidePlugin({
@@ -40,9 +43,11 @@ var configs = {
 if (/^(dev|test)/.test(env)) {
   configs.entry.app = ['webpack/hot/dev-server'].concat(configs.entry.app);
   configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle.js'))
+  configs.plugins.push(new ExtractTextPlugin("app-bundle.css"))
 
 } else if (/^prod/.test(env)) {
   configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle-[hash].js'))
+  configs.plugins.push(new ExtractTextPlugin("app-bundle-[hash].css"))
 
   configs.plugins.push(new webpack.optimize.UglifyJsPlugin({
     sourceMap: false

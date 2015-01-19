@@ -1,0 +1,8 @@
+@import '../../../stylesheets/ui';
+
+.greetings {
+  font-family: Helvetica;
+  font-size: $widget-greetings-font-size;
+  text-transform: uppercase;
+  color: $widget-greetings-color;
+}
