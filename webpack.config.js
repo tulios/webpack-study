@@ -7,18 +7,15 @@ var notHotReload = process.env['HOT'] || 'true'
 var SaveAssetsJson = require('assets-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+var appConfigs = require('./configs');
+
 var configs = {
   context: __dirname,
   debug: false,
   entry: {
     app: ['./src/app.jsx'],
     styles: ['./src/styles.js'],
-    vendor: [
-      'jquery',
-      'react',
-      'react-router',
-      './src/vendor/standalone-library'
-    ]
+    vendor: appConfigs.js.vendor
   },
   output: {
     jsonpFunction: 'wload',

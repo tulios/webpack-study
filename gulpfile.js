@@ -8,7 +8,7 @@ var webpackConfig = require('./webpack.config')
 
 gulp.task('clean', function(callback) {
   del(['build/**/*.js', 'build/**/*.css'], callback)
-})
+});
 
 gulp.task('build', ['clean'], function(callback) {
   webpack(webpackConfig, function(err, stats) {
@@ -18,4 +18,13 @@ gulp.task('build', ['clean'], function(callback) {
     }))
     callback()
   })
-})
+});
+
+gulp.task('update-styles', function() {
+  var cssManifest = require('./lib/gulp-css-manifest');
+  var configs = require('./configs');
+
+  gulp.src(configs.css.files, {read: false, base: './src'}).
+    pipe(cssManifest({filename: 'styles.js'})).
+    pipe(gulp.dest('./src'));
+});

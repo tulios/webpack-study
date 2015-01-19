@@ -13,13 +13,15 @@
     "style-loader": "^0.8.3"
   },
   "devDependencies": {
+    "assets-webpack-plugin": "^0.1.0",
     "del": "^1.1.1",
+    "event-stream": "^3.2.1",
     "gulp": "^3.8.10",
     "gulp-util": "^3.0.2",
     "jsx-loader": "^0.12.2",
+    "through2": "^0.6.3",
     "webpack": "^1.4.15",
-    "webpack-dev-server": "^1.7.0",
-    "assets-webpack-plugin": "^0.1.0"
+    "webpack-dev-server": "^1.7.0"
   },
   "scripts": {
     "dev-server": "./node_modules/.bin/webpack-dev-server --port 8082 --content-base build/public  --hot --colors --progress"
