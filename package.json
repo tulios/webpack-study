@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "description": "",
   "main": "gulpfile.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tulios/webpack-study.git"
+  },
   "dependencies": {
     "css-loader": "^0.9.1",
     "extract-text-webpack-plugin": "^0.3.8",
