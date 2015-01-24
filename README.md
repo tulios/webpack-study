@@ -8,6 +8,8 @@
 * Centralized JS vendor list
 * Centralized JS alias (mimic a library with your own files)
 * Build task with multiple environments including uglifying and asset manifest generation (NODE_ENV=production gulp build)
+* Component view generator (NAME=view-name gulp new:view)
+* Component widget generator (NAME=widget-name gulp new:widget)
 
 ## Building / Running
 

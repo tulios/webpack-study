@@ -1,6 +1,7 @@
 module.exports = {
   env: process.env['NODE_ENV'] || 'development',
   output: './build/public/assets',
+  componentsPath: './src/components',
   js: {
     vendor: [
       'jquery',
