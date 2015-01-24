@@ -7,7 +7,11 @@ var webpack = require('webpack')
 var webpackConfig = require('./webpack.config')
 
 gulp.task('clean', function(callback) {
-  del(['build/**/*.js', 'build/**/*.css'], callback)
+  del([
+    'build/**/*.js',
+    'build/**/*.css',
+    'build/**/*.json'
+  ], callback)
 });
 
 gulp.task('build', ['clean'], function(callback) {
