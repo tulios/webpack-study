@@ -7,7 +7,7 @@ var SaveAssetsJson = require('assets-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 var appConfigs = require('./configs');
-var outputDir = path.join(__dirname, '/build/public/assets');
+var outputDir = path.join(__dirname, appConfigs.output);
 
 var jsAlias = appConfigs.js.alias;
 for (var attr in jsAlias) {
