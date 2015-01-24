@@ -1,7 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
 
-var env = process.env['NODE_ENV'] || 'dev'
 var notHotReload = process.env['HOT'] || 'true'
 
 var SaveAssetsJson = require('assets-webpack-plugin')
@@ -58,7 +57,7 @@ var configs = {
   ]
 }
 
-if (/^(dev|test)/.test(env)) {
+if (/^(development|test)/.test(appConfigs.env)) {
   if (notHotReload !== 'false') {
     configs.entry.app = ['webpack/hot/dev-server'].concat(configs.entry.app);
   }
@@ -66,7 +65,7 @@ if (/^(dev|test)/.test(env)) {
   configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle.js'))
   configs.plugins.push(new ExtractTextPlugin('app-bundle.css', {allChunks: true}))
 
-} else if (/^prod/.test(env)) {
+} else if (/^production/.test(appConfigs.env)) {
   configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle-[hash].js'))
   configs.output.filename = configs.output.filename.replace(/\.js$/, '-[hash].js')
   configs.plugins.push(new ExtractTextPlugin('app-bundle-[hash].css', {allChunks: true}))
