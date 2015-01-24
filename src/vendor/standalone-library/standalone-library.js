@@ -1,1 +1,3 @@
-console.log('standalone library loaded')
+module.exports = function() {
+  console.log('standalone library loaded')
+}

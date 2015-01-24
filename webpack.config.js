@@ -30,7 +30,8 @@ var configs = {
     ]
   },
   resolve: {
-    extensions: ['', '.js', '.jsx', '.css', '.scss']
+    extensions: ['', '.js', '.jsx', '.css', '.scss'],
+    alias: appConfigs.js.alias
   },
   plugins: [
     new webpack.ProvidePlugin({

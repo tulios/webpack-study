@@ -1,4 +1,5 @@
 var React = require('react')
+var StandaloneLibrary = require('standalone-library')
 var Greetings = require('../../widgets/greetings')
 
 module.exports = React.createClass({
@@ -8,5 +9,9 @@ module.exports = React.createClass({
         <Greetings />
       </div>
     )
+  },
+
+  componentDidMount: function() {
+    StandaloneLibrary();
   }
 })

@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
   js: {
     vendor: [
@@ -5,7 +7,10 @@ module.exports = {
       'react',
       'react-router',
       './src/vendor/standalone-library'
-    ]
+    ],
+    alias: {
+      'standalone-library$': path.join(__dirname, './src/vendor/standalone-library')
+    }
   },
 
   css: {
