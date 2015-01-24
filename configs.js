@@ -1,5 +1,3 @@
-var path = require('path');
-
 module.exports = {
   js: {
     vendor: [
@@ -9,7 +7,7 @@ module.exports = {
       './src/vendor/standalone-library'
     ],
     alias: {
-      'standalone-library$': path.join(__dirname, './src/vendor/standalone-library')
+      'standalone-library$': './src/vendor/standalone-library'
     }
   },
 
@@ -21,6 +19,9 @@ module.exports = {
       './src/components/widgets/**/**/*.scss',
       './src/components/views/**/**/*.css',
       './src/components/views/**/**/*.scss'
+    ],
+    includes: [
+      './src/stylesheets/app'
     ]
   }
 }

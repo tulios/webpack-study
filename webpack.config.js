@@ -10,6 +10,17 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var appConfigs = require('./configs');
 var outputDir = path.join(__dirname, '/build/public/assets');
 
+var jsAlias = appConfigs.js.alias;
+for (var attr in jsAlias) {
+  if (jsAlias.hasOwnProperty(attr)) {
+    jsAlias[attr] = path.join(__dirname, jsAlias[attr]);
+  }
+}
+
+var sassIncludes = appConfigs.css.includes.map(function(includePath) {
+  return 'includePaths[]=' + path.join(__dirname, includePath)
+}).join('&')
+
 var configs = {
   context: __dirname,
   debug: false,
@@ -25,13 +36,19 @@ var configs = {
   },
   module: {
     loaders: [
-      {test: /\.jsx$/, loader: 'jsx-loader'},
-      {test: /\.(css|scss)$/, loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader')}
+      {
+        test: /\.jsx$/,
+        loader: 'jsx-loader'
+      },
+      {
+        test: /\.(css|scss)$/,
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!sass-loader?' + sassIncludes)
+      }
     ]
   },
   resolve: {
     extensions: ['', '.js', '.jsx', '.css', '.scss'],
-    alias: appConfigs.js.alias
+    alias: jsAlias
   },
   plugins: [
     new webpack.ProvidePlugin({

@@ -1,6 +1,7 @@
-@import '../../../../stylesheets/ui';
+@import 'ui';
 
 .home-view {
   padding: 50px;
   border: 1px solid $view-home-border-color;
+  background-color: $view-home-bg-color;
 }
