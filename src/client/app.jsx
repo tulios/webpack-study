@@ -1,7 +1,7 @@
 var React = require('react');
 var Router = require('react-router');
 
-var HomeView = require('./components/views/home')
+var HomeView = require('app/components/views/home')
 
 var routes = (
   <Router.Route handler={HomeView} path='/' />

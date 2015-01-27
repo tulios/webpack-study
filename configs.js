@@ -1,7 +1,7 @@
 module.exports = {
   env: process.env['NODE_ENV'] || 'development',
   output: './build/public/assets',
-  componentsPath: './src/components',
+  componentsPath: './src/client/components',
   js: {
     vendor: [
       'jquery',
@@ -10,6 +10,7 @@ module.exports = {
       './src/vendor/standalone-library'
     ],
     alias: {
+      'app': './src/client',
       'standalone-library$': './src/vendor/standalone-library'
     }
   },
@@ -18,10 +19,10 @@ module.exports = {
     files: [
       './src/stylesheets/**/*.css',
       './src/stylesheets/**/*.scss',
-      './src/components/widgets/**/**/*.css',
-      './src/components/widgets/**/**/*.scss',
-      './src/components/views/**/**/*.css',
-      './src/components/views/**/**/*.scss'
+      './src/client/components/widgets/**/**/*.css',
+      './src/client/components/widgets/**/**/*.scss',
+      './src/client/components/views/**/**/*.css',
+      './src/client/components/views/**/**/*.scss'
     ],
     includes: [
       './src/stylesheets/app'

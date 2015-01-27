@@ -1,3 +1,3 @@
 require('./stylesheets/normalize.css');
-require('./components/widgets/greetings/stylesheets/greetings.scss');
-require('./components/views/home/stylesheets/home-view.scss');
+require('./client/components/widgets/greetings/stylesheets/greetings.scss');
+require('./client/components/views/home/stylesheets/home-view.scss');

@@ -11,7 +11,7 @@ var outputDir = path.join(__dirname, appConfigs.output);
 
 var jsAlias = appConfigs.js.alias;
 for (var attr in jsAlias) {
-  if (jsAlias.hasOwnProperty(attr) && !/\.\//.test(jsAlias[attr])) {
+  if (jsAlias.hasOwnProperty(attr) && /\.\//.test(jsAlias[attr])) {
     jsAlias[attr] = path.join(__dirname, jsAlias[attr]);
   }
 }
@@ -24,7 +24,7 @@ var configs = {
   context: __dirname,
   debug: false,
   entry: {
-    app: ['./src/app.jsx'],
+    app: ['./src/client/app.jsx'],
     styles: ['./src/styles.js'],
     vendor: appConfigs.js.vendor
   },
@@ -46,6 +46,7 @@ var configs = {
     ]
   },
   resolve: {
+    root: path.join(__dirname, './src/client'),
     extensions: ['', '.js', '.jsx', '.css', '.scss'],
     alias: jsAlias
   },

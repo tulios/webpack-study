@@ -1,6 +1,6 @@
 var React = require('react')
 var StandaloneLibrary = require('standalone-library')
-var Greetings = require('../../widgets/greetings')
+var Greetings = require('app/components/widgets/greetings')
 
 module.exports = React.createClass({
   render: function() {
