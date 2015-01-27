@@ -72,6 +72,7 @@ if (/^(development|test)/.test(appConfigs.env)) {
   configs.plugins.push(new ExtractTextPlugin('app-bundle-[hash].css', {allChunks: true}))
 
   configs.plugins.push(new webpack.optimize.UglifyJsPlugin({sourceMap: false}))
+  configs.plugins.push(new webpack.optimize.DedupePlugin())
 
   configs.plugins.push(new SaveAssetsJson({
     filename: 'manifest.json',

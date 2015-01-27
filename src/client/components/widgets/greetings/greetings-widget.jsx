@@ -1,6 +1,6 @@
 var React = require('react')
 
-module.exports = React.createClass({
+var GreetingsWidget = React.createClass({
   render: function() {
     return (
       <span className='greetings'>
@@ -9,3 +9,5 @@ module.exports = React.createClass({
     )
   }
 })
+
+module.exports = GreetingsWidget

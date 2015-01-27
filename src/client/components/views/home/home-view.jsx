@@ -1,12 +1,12 @@
 var React = require('react')
 var StandaloneLibrary = require('standalone-library')
-var Greetings = require('app/components/widgets/greetings')
+var GreetingsWidget = require('app/components/widgets/greetings')
 
-module.exports = React.createClass({
+var HomeView = React.createClass({
   render: function() {
     return (
       <div className='home-view'>
-        <Greetings />
+        <GreetingsWidget />
       </div>
     )
   },
@@ -15,3 +15,5 @@ module.exports = React.createClass({
     StandaloneLibrary();
   }
 })
+
+module.exports = HomeView
