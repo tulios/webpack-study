@@ -11,7 +11,7 @@ var outputDir = path.join(__dirname, appConfigs.output);
 
 var jsAlias = appConfigs.js.alias;
 for (var attr in jsAlias) {
-  if (jsAlias.hasOwnProperty(attr)) {
+  if (jsAlias.hasOwnProperty(attr) && !/\.\//.test(jsAlias[attr])) {
     jsAlias[attr] = path.join(__dirname, jsAlias[attr]);
   }
 }
