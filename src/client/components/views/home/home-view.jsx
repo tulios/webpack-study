@@ -1,6 +1,6 @@
 var React = require('react')
-var StandaloneLibrary = require('standalone-library')
 var GreetingsWidget = require('app/components/widgets/greetings')
+var StandaloneLibrary = require('standalone-library')
 
 var HomeView = React.createClass({
   render: function() {
@@ -12,7 +12,7 @@ var HomeView = React.createClass({
   },
 
   componentDidMount: function() {
-    StandaloneLibrary();
+    StandaloneLibrary()
   }
 })
 

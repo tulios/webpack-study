@@ -10,6 +10,8 @@
 * Build task with multiple environments including uglifying and asset manifest generation (NODE_ENV=production gulp build)
 * Component view generator (NAME=view-name gulp new:view)
 * Component widget generator (NAME=widget-name gulp new:widget)
+* Tests with jasmine + rewire (npm run test)
+* Tests for Continuous Integration (CI=true npm run test)
 
 ## Building / Running
 
