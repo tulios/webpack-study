@@ -47,7 +47,7 @@ module.exports = function(config) {
         alias: {
           'app': path.join(__dirname, './src/client'),
           'standalone-library$': path.join(__dirname, './src/vendor/standalone-library'),
-          'rewire-module': path.join(__dirname, './spec/helpers/rewire-module')
+          'rewire-module': path.join(__dirname, './spec/helpers/rewire-module.jsx')
         }
       },
       plugins: [

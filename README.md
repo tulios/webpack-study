@@ -12,6 +12,7 @@
 * Component widget generator (NAME=widget-name gulp new:widget)
 * Tests with jasmine + rewire (npm run test)
 * Tests for Continuous Integration (CI=true npm run test)
+* Test helper to easily stub React components (stubComponent)
 
 ## Building / Running
 
