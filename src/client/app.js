@@ -18,6 +18,7 @@ function routeHandler(Handler, state) {
 }
 
 module.exports = {
+  version: APP_VERSION,
   router: router,
   handler: routeHandler
 }

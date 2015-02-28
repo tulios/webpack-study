@@ -49,6 +49,9 @@ var configs = {
     alias: jsAlias
   },
   plugins: [
+    new webpack.DefinePlugin({
+      'APP_VERSION': JSON.stringify(require('./package.json').version)
+    }),
     new webpack.ProvidePlugin({
       $: 'jquery',
       jQuery: 'jquery'
@@ -67,6 +70,12 @@ if (/^(development|test)/.test(appConfigs.env)) {
 
   configs.plugins.push(new webpack.optimize.UglifyJsPlugin({sourceMap: false}))
   configs.plugins.push(new webpack.optimize.DedupePlugin())
+  configs.plugins.push(new webpack.NoErrorsPlugin())
+  configs.plugins.push(new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify('production')
+    }
+  }))
 
   configs.plugins.push(new SaveAssetsJson({
     filename: 'manifest.json',
