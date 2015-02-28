@@ -22,7 +22,7 @@ var configs = {
   context: __dirname,
   debug: false,
   entry: {
-    app: ['./src/client/app.jsx'],
+    app: ['./src/client'],
     styles: ['./src/styles.js'],
     vendor: appConfigs.js.vendor
   },
@@ -34,7 +34,7 @@ var configs = {
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         loader: 'jsx-loader'
       },
       {
