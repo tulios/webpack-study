@@ -1,8 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
 
-var notHotReload = process.env['HOT'] || 'true'
-
 var SaveAssetsJson = require('assets-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 
@@ -59,10 +57,6 @@ var configs = {
 }
 
 if (/^(development|test)/.test(appConfigs.env)) {
-  if (notHotReload !== 'false') {
-    configs.entry.app = ['webpack/hot/dev-server'].concat(configs.entry.app);
-  }
-
   configs.plugins.push(new webpack.optimize.CommonsChunkPlugin('vendor', 'vendor-bundle.js'))
   configs.plugins.push(new ExtractTextPlugin('app-bundle.css', {allChunks: true}))
 

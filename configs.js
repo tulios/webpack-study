@@ -2,6 +2,11 @@ module.exports = {
   env: process.env['NODE_ENV'] || 'development',
   output: './build/public/assets',
   componentsPath: './src/client/components',
+  devServer: {
+    proxyPort: 8082,
+    webpackDevServerPort: 8083,
+    host: 'localhost'
+  },
   js: {
     vendor: [
       'jquery',
